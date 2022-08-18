@@ -8,7 +8,6 @@ import (
 	"sort"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/wI2L/fizz/markdown"
 )
@@ -25,7 +24,7 @@ func main() {
 			Caches: map[string]Cache{},
 		}
 		srcConfig = SourceConfig{
-			Title:       "Informative Articles",
+			Title:       "IA - Informative Articles",
 			Description: "",
 			Mark:        "⭐",
 		}
@@ -90,10 +89,10 @@ func buildMarkdown(srcConfig SourceConfig) string {
 		lists := []interface{}{}
 
 		for _, ref := range category.Refs {
-			internal := fmt.Sprintf("%s%s %s</br>%s",
+			internal := fmt.Sprintf("%s%s</br>%s",
 				strings.Repeat(srcConfig.Mark, ref.Good),
 				builder.Link(ref.Link, ref.Title),
-				ref.FoundAt.Format(time.ANSIC),
+				// ref.FoundAt.Format(time.ANSIC),
 				replaceLF(ref.Description),
 			)
 			lists = append(lists, internal)
