@@ -1,0 +1,15 @@
+title: Informative Articles
+desc: |
+  This document presents pages that were useful in the development.
+  このドキュメントは開発を進めるうえで有用だったページを紹介しています．
+mark: 🥰
+categories:
+  - name: Github Action
+    refs:
+      - link: + https://docs.github.com/ja/actions/creating-actions/creating-a-docker-container-action
+        desc: This is Github official document
+
+  - name: Golang
+    refs:
+      - link: https://abhinavg.net/posts/flexible-yaml/
+      - ++ https://pkg.go.dev/github.com/wi2L/fizz/markdown

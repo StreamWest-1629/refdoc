@@ -1,0 +1,19 @@
+{
+  "caches": {
+    "https://abhinavg.net/posts/flexible-yaml/": {
+      "url": "https://abhinavg.net/posts/flexible-yaml/",
+      "title": "How to write flexible YAML shapes in Go",
+      "foundAt": "2022-08-18T14:19:05.687941665Z"
+    },
+    "https://docs.github.com/ja/actions/creating-actions/creating-a-docker-container-action": {
+      "url": "https://docs.github.com/ja/actions/creating-actions/creating-a-docker-container-action",
+      "title": "Docker コンテナのアクションを作成する - GitHub Docs",
+      "foundAt": "2022-08-18T14:36:53.282851367Z"
+    },
+    "https://pkg.go.dev/github.com/wi2L/fizz/markdown": {
+      "url": "https://pkg.go.dev/github.com/wi2L/fizz/markdown",
+      "title": "markdown package - github.com/wi2L/fizz/markdown - Go Packages",
+      "foundAt": "2022-08-18T14:19:05.42492001Z"
+    }
+  }
+}
