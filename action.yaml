@@ -26,7 +26,8 @@ runs:
         go-version: ^1.18
         check-latest: true
         cache: true
-    - run: go run .
+    - shell: bash
+      run: go run .
       env:
         SOURCE_FILEPATH: ${{ inputs.refdoc }}
         CACHE_FILEPATH: ${{ inputs.cachepath }}
