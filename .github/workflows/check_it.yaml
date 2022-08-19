@@ -14,7 +14,7 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
       - name: Run
-        uses: streamwest-1629/refdoc@{{ github.sha }}
+        uses: streamwest-1629/refdoc@${{ github.sha }}
         with:
           refdoc: refdoc.yaml
       - name: Set current datetime as env variable
