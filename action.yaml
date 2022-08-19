@@ -20,6 +20,7 @@ inputs:
     default: refdoc/cache.json
     description: The filepath of cached json file
 runs:
+  using: composite
   steps:
     - uses: actions/setup-go@v3
       with:
