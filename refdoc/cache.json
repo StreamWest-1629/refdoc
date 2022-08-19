@@ -5,6 +5,11 @@
       "title": "How to write flexible YAML shapes in Go",
       "foundAt": "2022-08-18T14:19:05.687941665Z"
     },
+    "https://blog.zelkova.cc/2020/01/github-action-on-github-actions.html": {
+      "url": "https://blog.zelkova.cc/2020/01/github-action-on-github-actions.html",
+      "title": "欅樹雑記: 開発中のGitHub ActionのテストをGitHub Actionsで行う",
+      "foundAt": "2022-08-19T00:49:30.579674847Z"
+    },
     "https://docs.github.com/ja/actions/creating-actions/creating-a-docker-container-action": {
       "url": "https://docs.github.com/ja/actions/creating-actions/creating-a-docker-container-action",
       "title": "Docker コンテナのアクションを作成する - GitHub Docs",
