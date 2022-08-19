@@ -9,12 +9,12 @@ inputs:
     required: false
     default: refdoc/README.md
     description: The filepath of generated markdown file.
-  iscache:
-    required: false
-    default: true
-    description: |
-      Create cache file or not.
-      Cache file containing cached title and foundAt data.
+  # iscache:
+  #   required: false
+  #   default: true
+  #   description: |
+  #     Create cache file or not.
+  #     Cache file containing cached title and foundAt data.
   cachepath:
     required: false
     default: refdoc/cache.json
@@ -27,3 +27,10 @@ runs:
         check-latest: true
         cache: true
     - run: go run .
+      env:
+        SOURCE_FILEPATH: ${{ inputs.refdoc }}
+        CACHE_FILEPATH: ${{ inputs.cachepath }}
+        DEST_FILEPATH: ${{ inputs.markdown }}
+branding:
+  color: white
+  icon: save
