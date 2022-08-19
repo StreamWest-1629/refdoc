@@ -203,9 +203,7 @@ type References []Reference
 func (a References) Len() int      { return len(a) }
 func (a References) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 func (a References) Less(i, j int) bool {
-	if a[i].Good != a[j].Good {
-		return a[i].Good > a[j].Good
-	} else if !a[i].FoundAt.Equal(a[j].FoundAt) {
+	if !a[i].FoundAt.Equal(a[j].FoundAt) {
 		return a[i].FoundAt.After(a[j].FoundAt)
 	} else {
 		return a[i].Link < a[j].Link
