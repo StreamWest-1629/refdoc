@@ -16,6 +16,10 @@ func main() {
 
 	wd, _ := os.Getwd()
 
+	if githubWorkdir := os.Getenv("GITHUB_WORKSPACE"); githubWorkdir != "" {
+		wd = githubWorkdir
+	}
+
 	var (
 		sourcePath  = filepath.Join(wd, os.Getenv("SOURCE_FILEPATH"))
 		cachePath   = filepath.Join(wd, os.Getenv("CACHE_FILEPATH"))

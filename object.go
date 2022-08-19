@@ -27,7 +27,7 @@ type (
 	}
 
 	Reference struct {
-		Title       string    `yaml:"title"`
+		Title       string    `yaml:"-"`
 		Link        string    `yaml:"link"`
 		Good        int       `yaml:"-"`
 		Description string    `yaml:"desc"`
