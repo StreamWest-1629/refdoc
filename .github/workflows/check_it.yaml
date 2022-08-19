@@ -17,11 +17,14 @@ jobs:
         uses: ./.
         with:
           refdoc: refdoc.yaml
+      - name: Cat refdoc.md
+        run: cat ./refdoc/README.md
       - name: Set current datetime as env variable
         env:
           TZ: 'Asia/Tokyo'
         run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Commit and Push
+        if: ${{ github.event_name == 'push' }}
         uses: actions-js/push@v1.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
