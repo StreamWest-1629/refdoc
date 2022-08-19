@@ -10,5 +10,5 @@ This document presents pages that were useful in the development.</br>このド�
    
 ## Golang
 
-* 🥰🥰[markdown package - github.com/wi2L/fizz/markdown - Go Packages](https://pkg.go.dev/github.com/wi2L/fizz/markdown)</br>
 * [How to write flexible YAML shapes in Go](https://abhinavg.net/posts/flexible-yaml/)</br>
+* 🥰🥰[markdown package - github.com/wi2L/fizz/markdown - Go Packages](https://pkg.go.dev/github.com/wi2L/fizz/markdown)</br>
