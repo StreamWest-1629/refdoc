@@ -56,6 +56,8 @@ The category name. this value is required.
 ### categories[*].refs
 The link or description for informative articles. You can choice short expression and long expression to add it.
 
+By the default, title is gotten from article page.
+
 #### 1. short expression
 ```yaml
 refs:
@@ -64,3 +66,13 @@ refs:
 ```
 
 firstly `++` expresses a number of star mark ⭐. description is default; means blank.
+
+#### 2. full expression
+```yaml
+refs:
+  - link: ++ https://abcdefg.hij
+    desc: |
+      This is description. 
+      Write how this reference is helpful in your words.
+```
+
