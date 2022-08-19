@@ -1,0 +1,27 @@
+name: Check it
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check_it:
+    name: Check it
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+      - name: Run
+        uses: streamwest-1629/refdoc
+        with:
+          refdoc: refdoc.yaml
+      - name: Set current datetime as env variable
+        env:
+          TZ: 'Asia/Tokyo'
+        run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Commit and Push
+        uses: actions-js/push@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: "[BOT] update at ${{ env.CURRENT_DATETIME }}"
+          branch: ${{ github.ref_name }}
+    
