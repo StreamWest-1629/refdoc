@@ -59,7 +59,7 @@ The description for generated markdown file.
 This is star mark, you can add articles more useful than others (default: ⭐)
 
 ### categories[*].name
-The category name. this value is required.
+The category name. **this value is required**.
 
 ### categories[*].refs
 The link or description for informative articles. You can choice short expression and long expression to add it.
