@@ -1,8 +1,8 @@
 # refdoc
 The CLI tool for generate reference documentation
 
-## LT;DR
-### 1. create config file [(./refdoc.yaml)](./refdoc.yaml)
+## TL;DR
+### 1. create config file (current: [./refdoc.yaml])
 ```yaml
 title: Informative Articles
 desc: |
@@ -21,9 +21,17 @@ categories:
       - ++ https://pkg.go.dev/github.com/wi2L/fizz/markdown
 ```
 
-### 2, run command `refdoc`
-
-### 3. markdown file generated [(./refdoc/README.md)](./refdoc/README.md)
+### 2, run action `refdoc` (testing: [./.github/workflows/check_it.yaml])
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  - uses: streamwest-1629/refdoc@0.1.0
+    with:
+      refdoc: refdoc.yaml
+      cache: refdoc/cache.json   # default is refdoc/cache.json
+      markdown: refdoc/README.md # default is refdoc/README.md
+```
+### 3. markdown file generated! (current: [./refdoc/README.md])
 ```md
 # Informative Articles
 
@@ -76,3 +84,14 @@ refs:
       Write how this reference is helpful in your words.
 ```
 
+## Configurations of Github actions
+| input name | required | default | description
+| :--: | :--: | :--: | :---
+| refdoc | **Yes** | - | Filepath of your configuration file for refdoc (in this repository, [./refdoc.yaml]).
+| cache | No | `./refdoc/cache.json` | Filepath of cache file in refdoc (in this repository, [./refdoc/cache.json]).</br>If it was empty, refdoc won't use cache, but cache file containing `foundAt` each your found references. We highly recommend for using cache file.
+| markdown | No | `./refdoc/README.md` | Filepath of refdoc's generated markdown file (in this repository, [./refdoc/README.md]).
+
+[./refdoc.yaml]: ./refdoc.yaml
+[./.github/workflows/check_it.yaml]: ./.github/workflows/check_it.yaml
+[./refdoc/README.md]: ./refdoc/README.md
+[./refdoc/cache.json]: ./refdoc/cache.json
