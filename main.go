@@ -2,9 +2,9 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"os"
-	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -14,17 +14,9 @@ import (
 
 func main() {
 
-	wd, _ := os.Getwd()
-
-	if githubWorkdir := os.Getenv("GITHUB_WORKSPACE"); githubWorkdir != "" {
-		wd = githubWorkdir
-	}
-
 	var (
-		sourcePath  = filepath.Join(wd, os.Getenv("SOURCE_FILEPATH"))
-		cachePath   = filepath.Join(wd, os.Getenv("CACHE_FILEPATH"))
-		destPath    = filepath.Join(wd, os.Getenv("DEST_FILEPATH"))
-		cacheConfig = CacheConfig{
+		sourcePath, cachePath, destPath string
+		cacheConfig                     = CacheConfig{
 			Caches: map[string]Cache{},
 		}
 		srcConfig = SourceConfig{
@@ -34,6 +26,11 @@ func main() {
 		}
 		wg = sync.WaitGroup{}
 	)
+
+	flag.StringVar(&sourcePath, "source", sourcePath, "The filepath of source file")
+	flag.StringVar(&cachePath, "cache", "", "The filepath of cache file")
+	flag.StringVar(&destPath, "dest", "./refdoc/README.md", "The filepath of destination file")
+	flag.Parse()
 
 	wg.Add(2)
 	go func() {
@@ -46,6 +43,9 @@ func main() {
 
 	go func() {
 		defer wg.Done()
+		if cachePath == "" {
+			return
+		}
 		if err := ReadCacheJson(cachePath, &cacheConfig); err != nil {
 			if os.IsNotExist(err) {
 				logger.Info("not found cache file", "path", cachePath)
@@ -63,6 +63,9 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
+		if cachePath == "" {
+			return
+		}
 		WriteCacheJson(cachePath, cacheConfig)
 	}()
 	defer wg.Wait()
