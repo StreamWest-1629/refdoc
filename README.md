@@ -92,6 +92,6 @@ refs:
 | markdown | No | `./refdoc/README.md` | Filepath of refdoc's generated markdown file (in this repository, [./refdoc/README.md]).
 
 [./refdoc.yaml]: ./refdoc.yaml
-[./.github/workflows/check_it.yaml]: ./.github/workflows/check_it.yaml
+[./.github/workflows/check_it.yaml]: ./.github/workflows/check_it.yaml#L16-L19
 [./refdoc/README.md]: ./refdoc/README.md
 [./refdoc/cache.json]: ./refdoc/cache.json
