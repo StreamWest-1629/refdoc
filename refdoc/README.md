@@ -10,5 +10,6 @@ This document presents pages that were useful in the development.</br>このド�
    
 ## Golang
 
+* [Goでflagを使ってコマンドライン引数を扱う - Qiita](https://qiita.com/Yaruki00/items/7edc04720a24e71abfa2)</br>
 * [How to write flexible YAML shapes in Go](https://abhinavg.net/posts/flexible-yaml/)</br>
 * 🥰🥰[markdown package - github.com/wi2L/fizz/markdown - Go Packages](https://pkg.go.dev/github.com/wi2L/fizz/markdown)</br>
