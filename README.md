@@ -1,5 +1,17 @@
 # refdoc
-The CLI tool for generate reference documentation
+The CLI tool for generate reference documentation.
+
+[![][badge-workflows-check_it]][workflows-check_it]
+---
+[![][badge-issues-enhancement]][new-issue-enhancement]
+[![][badge-issues-bug]][new-issue-bug]
+
+[badge-workflows-check_it]: https://img.shields.io/github/workflow/status/streamwest-1629/refdoc/Check%20it
+[badge-issues-enhancement]: https://img.shields.io/github/issues/streamwest-1629/refdoc/enhancement?label=make%20enhancement&logo=github
+[badge-issues-bug]: https://img.shields.io/github/issues/streamwest-1629/refdoc/enhancement?label=found%20bug&logo=github&color=red
+[workflows-check_it]: https://github.com/StreamWest-1629/refdoc/actions/workflows/check_it.yaml
+[new-issue-enhancement]:https://github.com/streamwest-1629/refdoc/issues/new?template=enhancement.md&labels=enhancement
+[new-issue-bug]:https://github.com/streamwest-1629/refdoc/issues/new?template=bugfix.md&labels=bug
 
 ## TL;DR
 ### 1. create config file (current: [./refdoc.yaml])
