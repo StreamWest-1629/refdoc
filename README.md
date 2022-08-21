@@ -1,8 +1,20 @@
 # refdoc
-The CLI tool for generate reference documentation
+The CLI tool for generate reference documentation.
 
-## LT;DR
-### 1. create config file [(./refdoc.yaml)](./refdoc.yaml)
+[![][badge-workflows-check_it]][workflows-check_it]
+---
+[![][badge-issues-enhancement]][new-issue-enhancement]
+[![][badge-issues-bug]][new-issue-bug]
+
+[badge-workflows-check_it]: https://img.shields.io/github/workflow/status/streamwest-1629/refdoc/Check%20it
+[badge-issues-enhancement]: https://img.shields.io/github/issues/streamwest-1629/refdoc/enhancement?label=make%20enhancement&logo=github
+[badge-issues-bug]: https://img.shields.io/github/issues/streamwest-1629/refdoc/enhancement?label=found%20bug&logo=github&color=red
+[workflows-check_it]: https://github.com/StreamWest-1629/refdoc/actions/workflows/check_it.yaml
+[new-issue-enhancement]:https://github.com/streamwest-1629/refdoc/issues/new?template=enhancement.md&labels=enhancement
+[new-issue-bug]:https://github.com/streamwest-1629/refdoc/issues/new?template=bugfix.md&labels=bug
+
+## TL;DR
+### 1. create config file (current: [./refdoc.yaml])
 ```yaml
 title: Informative Articles
 desc: |
@@ -21,9 +33,17 @@ categories:
       - ++ https://pkg.go.dev/github.com/wi2L/fizz/markdown
 ```
 
-### 2, run command `refdoc`
-
-### 3. markdown file generated [(./refdoc/README.md)](./refdoc/README.md)
+### 2, run action `refdoc` (testing: [./.github/workflows/check_it.yaml])
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  - uses: streamwest-1629/refdoc@0.1.0
+    with:
+      refdoc: refdoc.yaml
+      cache: refdoc/cache.json   # default is refdoc/cache.json
+      markdown: refdoc/README.md # default is refdoc/README.md
+```
+### 3. markdown file generated! (current: [./refdoc/README.md])
 ```md
 # Informative Articles
 
@@ -51,7 +71,7 @@ The description for generated markdown file.
 This is star mark, you can add articles more useful than others (default: ⭐)
 
 ### categories[*].name
-The category name. this value is required.
+The category name. **this value is required**.
 
 ### categories[*].refs
 The link or description for informative articles. You can choice short expression and long expression to add it.
@@ -76,3 +96,14 @@ refs:
       Write how this reference is helpful in your words.
 ```
 
+## Configurations of Github actions
+| input name | required | default | description
+| :--: | :--: | :--: | :---
+| refdoc | **Yes** | - | Filepath of your configuration file for refdoc (in this repository, [./refdoc.yaml]).
+| cache | No | `./refdoc/cache.json` | Filepath of cache file in refdoc (in this repository, [./refdoc/cache.json]).</br>If it was empty, refdoc won't use cache, but cache file containing `foundAt` each your found references. We highly recommend for using cache file.
+| markdown | No | `./refdoc/README.md` | Filepath of refdoc's generated markdown file (in this repository, [./refdoc/README.md]).
+
+[./refdoc.yaml]: ./refdoc.yaml
+[./.github/workflows/check_it.yaml]: ./.github/workflows/check_it.yaml#L16-L19
+[./refdoc/README.md]: ./refdoc/README.md
+[./refdoc/cache.json]: ./refdoc/cache.json
