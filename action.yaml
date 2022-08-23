@@ -23,7 +23,8 @@ runs:
         cache: true
     - shell: bash
       run: |
-        go run . \
+        go install github.com/streamwest-1629/refdoc@${{ github.action_ref }} && \
+        refdoc \
         --source=${{ inputs.refdoc }} \
         --cache=${{ inputs.cachepath }} \
         --dest=${{ inputs.markdown }}
