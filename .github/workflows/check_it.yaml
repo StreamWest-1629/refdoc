@@ -33,9 +33,6 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}
-          flavor: |
-            latest=true
-            prefix=devcontainer-,onlatest=true
           tags: |
             type=sha,format=long
             type=raw,value=${{ env.BRANCH_TAG }}
@@ -44,7 +41,7 @@ jobs:
         with:
           push: true
           context: .
-          file: .devcontainer/Dockerfile
+          file: Dockerfile
           platforms: linux/amd64
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
