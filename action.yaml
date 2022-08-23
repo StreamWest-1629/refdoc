@@ -14,24 +14,14 @@ inputs:
     default: refdoc/cache.json
     description: The filepath of cached json file. If it is empty, this won't generate cache file.
 runs:
-  using: composite
-  steps:
-    - uses: actions/setup-go@v3
-      with:
-        go-version: ^1.18
-        check-latest: true
-        cache: true
-    - shell: bash
-      run: |
-        VERSION="${{ github.action_ref }}"
-        if [ "${VERSION}" == "" ]; then 
-          VERSION="latest"
-        fi
-        go install github.com/streamwest-1629/refdoc@${VERSION} && \
-        refdoc \
-        --source=${{ inputs.refdoc }} \
-        --cache=${{ inputs.cachepath }} \
-        --dest=${{ inputs.markdown }}
+  using: docker
+  image: ./Dockerfile
+  entrypoint: refdoc
+  args:
+    - --source=${{ inputs.refdoc }}
+    - --cache=${{ inputs.cachepath }}
+    - --dest=${{ inputs.markdown }}
+        
 branding:
   color: white
   icon: save
