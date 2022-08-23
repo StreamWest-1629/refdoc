@@ -23,9 +23,9 @@ runs:
         cache: true
     - shell: bash
       run: |
-        VERSION=${{ github.action_ref }}
+        VERSION="${{ github.action_ref }}"
         if "${VERSION}" == ""; then 
-          VERSION=latest
+          VERSION="latest"
         fi
         go install github.com/streamwest-1629/refdoc@${VERSION} && \
         refdoc \
