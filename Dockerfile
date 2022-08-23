@@ -4,7 +4,4 @@ WORKDIR /build
 COPY go.* ./
 RUN go mod download
 COPY *.go ./
-RUN go build -o /build/app .
-
-FROM scratch:latest
-COPY --from=builder /build/app /bin/
+RUN go build -o /bin/refdoc .
