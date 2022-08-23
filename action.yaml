@@ -23,7 +23,11 @@ runs:
         cache: true
     - shell: bash
       run: |
-        go install github.com/streamwest-1629/refdoc@${{ github.action_ref }} && \
+        VERSION=${{ github.action_ref }}
+        if "${VERSION}" == ""; then 
+          VERSION=latest
+        fi
+        go install github.com/streamwest-1629/refdoc@${VERSION} && \
         refdoc \
         --source=${{ inputs.refdoc }} \
         --cache=${{ inputs.cachepath }} \
