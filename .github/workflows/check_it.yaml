@@ -11,7 +11,7 @@ env:
   REPO_NAME: streamwest-1629/refdoc
   BRANCH_TAG: latest
 jobs:
-  build:
+  build_container:
     name: Build
     runs-on: ubuntu-22.04
     permissions:
@@ -28,28 +28,28 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set metadata for Docker Image
-      id: metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: ${{ env.REGISTRY }}/${{ github.repository }}
-        flavor: |
-          latest=true
-          prefix=devcontainer-,onlatest=true
-        tags: |
-          type=sha,format=long
-          type=raw,value=${{ env.BRANCH_TAG }}
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        context: .
-        file: .devcontainer/Dockerfile
-        platforms: linux/amd64
-        tags: ${{ steps.metadata.outputs.tags }}
-        labels: ${{ steps.metadata.outputs.labels }}
-        cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.REPO_NAME }}:buildcache
-        cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.REPO_NAME }}:buildcache,mode=max
+      - name: Set metadata for Docker Image
+        id: metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          flavor: |
+            latest=true
+            prefix=devcontainer-,onlatest=true
+          tags: |
+            type=sha,format=long
+            type=raw,value=${{ env.BRANCH_TAG }}
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          context: .
+          file: .devcontainer/Dockerfile
+          platforms: linux/amd64
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.REPO_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.REPO_NAME }}:buildcache,mode=max
 
   check_it:
     name: Check it
