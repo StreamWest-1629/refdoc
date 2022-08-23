@@ -1,10 +1,10 @@
 FROM golang:1.18-bullseye as builder
 
 WORKDIR /build
-COPY go.* .
+COPY go.* ./
 RUN go mod download
-COPY *.go .
+COPY *.go ./
 RUN go build . -o /build/app
 
 FROM scratch:latest
-COPY --from=builder /build/app /bin
+COPY --from=builder /build/app /bin/
