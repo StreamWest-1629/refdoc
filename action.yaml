@@ -24,7 +24,7 @@ runs:
     - shell: bash
       run: |
         VERSION="${{ github.action_ref }}"
-        if "${VERSION}" == ""; then 
+        if [ "${VERSION}" == "" ]; then 
           VERSION="latest"
         fi
         go install github.com/streamwest-1629/refdoc@${VERSION} && \
